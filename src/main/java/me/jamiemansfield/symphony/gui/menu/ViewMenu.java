@@ -8,8 +8,9 @@
 package me.jamiemansfield.symphony.gui.menu;
 
 import javafx.event.ActionEvent;
-import javafx.scene.control.Menu;
-import javafx.scene.control.MenuItem;
+import javafx.scene.control.*;
+import me.jamiemansfield.symphony.gui.theme.Theme;
+import me.jamiemansfield.symphony.gui.theme.ThemeManager;
 import me.jamiemansfield.symphony.util.LocaleHelper;
 
 /**
@@ -20,17 +21,36 @@ import me.jamiemansfield.symphony.util.LocaleHelper;
  */
 public class ViewMenu extends Menu {
 
-    public ViewMenu(final MainMenuBar mainMenuBar) {
-        // Settings
-        super(LocaleHelper.get("menu.view"));
-        this.setMnemonicParsing(true);
+	public ViewMenu(final MainMenuBar mainMenuBar) {
+		// Settings
+		super(LocaleHelper.get("menu.view"));
+		this.setMnemonicParsing(true);
 
-        // Close all tabs
-        {
-            final MenuItem closeAllTabs = new MenuItem(LocaleHelper.get("menu.view.close_all_tabs"));
-            closeAllTabs.addEventHandler(ActionEvent.ACTION, event -> mainMenuBar.getSymphony().getTabs().getTabs().clear());
-            this.getItems().add(closeAllTabs);
-        }
-    }
+		// Themes
+		{
+			final Menu themes = new Menu(LocaleHelper.get("menu.view.themes"));
+			final ToggleGroup themeGroup = new ToggleGroup();
+			this.getItems().add(themes);
+			for (Theme theme : Theme.values()) {
+				RadioMenuItem themeItem = new RadioMenuItem(LocaleHelper.get("theme." + theme.getName()));
+				themeItem.setToggleGroup(themeGroup);
+				themeItem.addEventHandler(ActionEvent.ACTION, event -> ThemeManager.setTheme(theme, mainMenuBar.getSymphony()));
+				if (ThemeManager.getCurrentTheme() == theme) {
+					themeItem.setSelected(true);
+				}
+				themes.getItems().add(themeItem);
+			}
+		}
+
+		this.getItems().add(new SeparatorMenuItem());
+
+		// Close all tabs
+		{
+			final MenuItem closeAllTabs = new MenuItem(LocaleHelper.get("menu.view.close_all_tabs"));
+			closeAllTabs.addEventHandler(ActionEvent.ACTION, event -> mainMenuBar.getSymphony().getTabs().getTabs().clear());
+			this.getItems().add(closeAllTabs);
+		}
+
+	}
 
 }
