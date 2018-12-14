@@ -25,46 +25,46 @@ import me.jamiemansfield.symphony.util.LocaleHelper;
  */
 public class HelpMenu extends Menu {
 
-	private final SymphonyMain symphony;
+    private final SymphonyMain symphony;
 
-	public HelpMenu(final MainMenuBar mainMenuBar) {
-		// Settings
-		super(LocaleHelper.get("menu.help"));
-		this.setMnemonicParsing(true);
+    public HelpMenu(final MainMenuBar mainMenuBar) {
+        // Settings
+        super(LocaleHelper.get("menu.help"));
+        this.setMnemonicParsing(true);
 
-		// Fields
-		this.symphony = mainMenuBar.getSymphony();
+        // Fields
+        this.symphony = mainMenuBar.getSymphony();
 
-		// Items
-		{
-			final MenuItem welcomeTab = new MenuItem(LocaleHelper.get("menu.help.open_welcome_tab"));
-			welcomeTab.addEventHandler(ActionEvent.ACTION, this::displayWelcomeTab);
-			this.getItems().add(welcomeTab);
-		}
+        // Items
+        {
+            final MenuItem welcomeTab = new MenuItem(LocaleHelper.get("menu.help.open_welcome_tab"));
+            welcomeTab.addEventHandler(ActionEvent.ACTION, this::displayWelcomeTab);
+            this.getItems().add(welcomeTab);
+        }
 
-		{
-			final MenuItem tasksWindow = new MenuItem(LocaleHelper.get("menu.help.open_tasks_window"));
-			tasksWindow.addEventHandler(ActionEvent.ACTION, event -> TaskManager.INSTANCE.display());
-			this.getItems().add(tasksWindow);
-		}
-		this.getItems().add(new SeparatorMenuItem());
+        {
+            final MenuItem tasksWindow = new MenuItem(LocaleHelper.get("menu.help.open_tasks_window"));
+            tasksWindow.addEventHandler(ActionEvent.ACTION, event -> TaskManager.INSTANCE.display());
+            this.getItems().add(tasksWindow);
+        }
+        this.getItems().add(new SeparatorMenuItem());
 
-		{
-			final MenuItem about = new MenuItem(LocaleHelper.get("menu.help.about"));
-			about.addEventHandler(ActionEvent.ACTION, event -> AboutHelper.display());
-			this.getItems().add(about);
-		}
-	}
+        {
+            final MenuItem about = new MenuItem(LocaleHelper.get("menu.help.about"));
+            about.addEventHandler(ActionEvent.ACTION, event -> AboutHelper.display());
+            this.getItems().add(about);
+        }
+    }
 
-	private void displayWelcomeTab(final ActionEvent event) {
-		this.symphony.getTabs().getSelectionModel().select(this.symphony.getTabs().getTabs().stream()
-			.filter(WelcomeTab.class::isInstance)
-			.findFirst()
-			.orElseGet(() -> {
-				final WelcomeTab tab = new WelcomeTab();
-				this.symphony.getTabs().getTabs().add(tab);
-				return tab;
-			}));
-	}
+    private void displayWelcomeTab(final ActionEvent event) {
+        this.symphony.getTabs().getSelectionModel().select(this.symphony.getTabs().getTabs().stream()
+                .filter(WelcomeTab.class::isInstance)
+                .findFirst()
+                .orElseGet(() -> {
+                    final WelcomeTab tab = new WelcomeTab();
+                    this.symphony.getTabs().getTabs().add(tab);
+                    return tab;
+                }));
+    }
 
 }
