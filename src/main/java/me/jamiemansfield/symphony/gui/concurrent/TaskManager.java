@@ -10,6 +10,7 @@ package me.jamiemansfield.symphony.gui.concurrent;
 import javafx.concurrent.Task;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import me.jamiemansfield.symphony.gui.theme.ThemeManager;
 import org.controlsfx.control.TaskProgressView;
 
 /**
@@ -36,6 +37,7 @@ public final class TaskManager {
         final Stage window = new Stage();
         window.setTitle("Tasks");
         window.setScene(this.scene);
+        ThemeManager.setTheme(ThemeManager.getCurrentTheme(), this.scene);
         window.show();
     }
 
@@ -46,6 +48,7 @@ public final class TaskManager {
      * @param <T> The result of the task
      */
     public abstract class TrackedTask<T> extends Task<T> {
+
         {
             TaskManager.this.progressView.getTasks().add(this);
         }

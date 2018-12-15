@@ -1,20 +1,20 @@
 package me.jamiemansfield.symphony.gui.theme;
 
-import me.jamiemansfield.symphony.gui.SymphonyMain;
+import javafx.scene.Scene;
 
 public class ThemeManager {
 
-    private static Theme currentTheme = Theme.NONE;
+    private static Theme currentTheme;
 
-    public static void setTheme(Theme theme, SymphonyMain symphony) {
-        String oldCss = currentTheme.getCss();
+    public static void setTheme(Theme theme, Scene scene) {
+        if (currentTheme != null) {
+            String oldCss = currentTheme.getCss();
+            if (oldCss != null) {
+                scene.getStylesheets().remove(oldCss);
+            }
+        }
         String css = (currentTheme = theme).getCss();
-        if (oldCss != null) {
-            symphony.getStage().getScene().getStylesheets().remove(oldCss);
-        }
-        if (theme != Theme.NONE) {
-            symphony.getStage().getScene().getStylesheets().add(css);
-        }
+        scene.getStylesheets().add(css);
     }
 
     public static Theme getCurrentTheme() {

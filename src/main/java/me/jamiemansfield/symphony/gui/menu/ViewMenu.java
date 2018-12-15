@@ -39,12 +39,15 @@ public class ViewMenu extends Menu {
             for (Theme theme : Theme.values()) {
                 RadioMenuItem themeItem = new RadioMenuItem(LocaleHelper.get("theme." + theme.getName()));
                 themeItem.setToggleGroup(themeGroup);
-                themeItem.addEventHandler(ActionEvent.ACTION, event -> ThemeManager.setTheme(theme, mainMenuBar.getSymphony()));
+                themeItem.addEventHandler(ActionEvent.ACTION, event -> ThemeManager.setTheme(theme, mainMenuBar.getSymphony().getStage().getScene()));
                 if (ThemeManager.getCurrentTheme() == theme) {
                     themeItem.setSelected(true);
                 }
                 themes.getItems().add(themeItem);
             }
+            final MenuItem reloadTheme = new MenuItem(LocaleHelper.get("menu.view.themes.reload"));
+            reloadTheme.setOnAction(event -> ThemeManager.setTheme(ThemeManager.getCurrentTheme(), mainMenuBar.getSymphony().getStage().getScene()));
+            this.getItems().add(reloadTheme);
         }
 
         this.getItems().add(new SeparatorMenuItem());

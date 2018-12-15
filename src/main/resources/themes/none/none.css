@@ -1,0 +1,9 @@
+#package-icon{
+    -fx-icon-color: black;
+    -fx-icon-code: "fth-folder";
+}
+
+#class-icon{
+    -fx-icon-color: black;
+    -fx-icon-code: "fth-file";
+}

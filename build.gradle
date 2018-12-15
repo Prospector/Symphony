@@ -46,9 +46,14 @@ dependencies {
     // ControlsFX (JavaFX utility)
     compile 'org.controlsfx:controlsfx:8.40.14'
 
-    // Feather Icons (see https://feathericons.com/)
+    // Font Icons
     compile 'org.kordamp.ikonli:ikonli-javafx:2.4.0'
+
+    // Feather Icons (see https://feathericons.com/)
     compile 'org.kordamp.ikonli:ikonli-feather-pack:2.4.0'
+
+    // Material Icons
+    compile 'org.kordamp.ikonli:ikonli-materialdesign-pack:2.4.0'
 }
 
 processResources {

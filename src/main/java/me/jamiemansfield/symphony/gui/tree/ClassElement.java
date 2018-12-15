@@ -48,7 +48,9 @@ public class ClassElement implements TreeElement {
 
     @Override
     public Optional<Node> getGraphic() {
-        return Optional.of(new FontIcon("fth-file"));
+        FontIcon icon = new FontIcon();
+        icon.setId("class-icon");
+        return Optional.of(icon);
     }
 
     @Override

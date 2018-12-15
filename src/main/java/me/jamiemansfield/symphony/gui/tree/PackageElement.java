@@ -42,21 +42,21 @@ public class PackageElement implements TreeElement {
                 dialog.showAndWait()
                         .map(name -> name.endsWith("/") ? name : name + "/")
                         .ifPresent(deobfName -> {
-                    final String packageName = PackageElement.this.name;
+                            final String packageName = PackageElement.this.name;
 
-                    // Set the deobf name
-                    PackageElement.this.symphony.getJar().getMappings().getTopLevelClassMappings().stream()
-                            .filter(klass -> Objects.equals(packageName, klass.getDeobfuscatedPackage()) ||
-                                    klass.getDeobfuscatedPackage().startsWith(packageName + '/'))
-                            .forEach(klass -> {
-                                final String className =
-                                        klass.getDeobfuscatedName().substring(packageName.length() + 1);
-                                klass.setDeobfuscatedName(deobfName + className);
-                            });
+                            // Set the deobf name
+                            PackageElement.this.symphony.getJar().getMappings().getTopLevelClassMappings().stream()
+                                    .filter(klass -> Objects.equals(packageName, klass.getDeobfuscatedPackage()) ||
+                                            klass.getDeobfuscatedPackage().startsWith(packageName + '/'))
+                                    .forEach(klass -> {
+                                        final String className =
+                                                klass.getDeobfuscatedName().substring(packageName.length() + 1);
+                                        klass.setDeobfuscatedName(deobfName + className);
+                                    });
 
-                    // Update the view
-                    PackageElement.this.symphony.update();
-                });
+                            // Update the view
+                            PackageElement.this.symphony.update();
+                        });
             });
             this.getItems().add(remap);
         }
@@ -83,7 +83,9 @@ public class PackageElement implements TreeElement {
 
     @Override
     public Optional<Node> getGraphic() {
-        return Optional.of(new FontIcon("fth-folder"));
+        FontIcon icon = new FontIcon();
+        icon.setId("package-icon");
+        return Optional.of(icon);
     }
 
     @Override

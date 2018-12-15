@@ -9,6 +9,7 @@ package me.jamiemansfield.symphony.gui.util;
 
 import javafx.scene.control.Alert;
 import me.jamiemansfield.symphony.SharedConstants;
+import me.jamiemansfield.symphony.gui.theme.ThemeManager;
 
 /**
  * A helper class for displaying the about window.
@@ -37,6 +38,7 @@ public final class AboutHelper {
      * Displays the about window.
      */
     public static void display() {
+        ThemeManager.setTheme(ThemeManager.getCurrentTheme(), ALERT.getDialogPane().getScene());
         ALERT.showAndWait();
     }
 

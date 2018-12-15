@@ -1,6 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Montserrat:700');
-@import url('https://fonts.googleapis.com/css?family=Roboto:400,700,900');
-@import url('https://fonts.googleapis.com/css?family=Archivo+Narrow:400,700');
+@import url('https://fonts.googleapis.com/css?family=Roboto:400');
 @import url('https://fonts.googleapis.com/css?family=Roboto+Mono:400,700');
 
 * {
@@ -426,4 +424,14 @@
 
 .code-area:has-caret .text {
     -fx-fill: white;
+}
+
+#package-icon{
+    -fx-icon-color: #ebd65c;
+    -fx-icon-code: "mdi-folder";
+}
+
+#class-icon{
+    -fx-icon-color: #59b3e4;
+    -fx-icon-code: "mdi-hexagon";
 }

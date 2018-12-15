@@ -1,6 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Montserrat:700');
-@import url('https://fonts.googleapis.com/css?family=Roboto:400,700,900');
-@import url('https://fonts.googleapis.com/css?family=Archivo+Narrow:400,700');
+@import url('https://fonts.googleapis.com/css?family=Roboto:400');
 @import url('https://fonts.googleapis.com/css?family=Roboto+Mono:400,700');
 
 * {
@@ -59,16 +57,16 @@
 	/* Code Display */
 	-code-area-color: -dark-color;
 	-code-area-color-highlighted: #383838;
-	-code-area-lineno-color: #191919;
-	-code-area-text-color: #C6C4C4;
+	-code-area-lineno-color: #d0d0d0;
+	-code-area-text-color: #2a2a2a;
 	-code-area-caret-color: white;
-	-code-area-string-color: #7AC668;
-	-code-area-keyword-color: #47C5D4;
-	-code-area-paren-color: #FFAAB3;
-	-code-area-semicolon-color: #C1C1C1;
-	-code-area-bracket-color: #FF5D42;
-	-code-area-brace-color: #C1C1C1;
-	-code-area-comment-color: #609B50;
+	-code-area-string-color: #377b27;
+	-code-area-keyword-color: #333cb7;
+	-code-area-paren-color: #7c7c7c;
+	-code-area-semicolon-color: #7c7c7c;
+	-code-area-bracket-color: #7c7c7c;
+	-code-area-brace-color: #7c7c7c;
+	-code-area-comment-color: lightgray;
 }
 
 .root {
@@ -426,4 +424,14 @@
 
 .code-area:has-caret .text {
     -fx-fill: white;
+}
+
+#package-icon{
+    -fx-icon-color: -text-color;
+    -fx-icon-code: "mdi-folder";
+}
+
+#class-icon{
+    -fx-icon-color: #59b3e4;
+    -fx-icon-code: "mdi-hexagon";
 }
